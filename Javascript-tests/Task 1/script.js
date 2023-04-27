@@ -32,35 +32,26 @@ form.addEventListener('submit', (event) => {
         }        
         output.innerHTML = '';
 
-        const poundsCard = document.createElement('div')
-        const poundsInner = document.createElement('div')
-        const poundsOutput = document.createElement('span');
-        poundsCard.setAttribute('class','output-card');
-        poundsInner.innerHTML = `${inputValue} kg weight in pounds (lb) is `;
-        poundsOutput.innerHTML = `${inputValue * 2.2046} lb`;
-        output.appendChild(poundsCard);
-        poundsCard.appendChild(poundsInner);
-        poundsInner.append(poundsOutput);
+        for(i=0;i<3;i++){
+            const outputCard = document.createElement('div')
+            const outputInner = document.createElement('div')
+            const outputValue = document.createElement('span');
+            outputCard.setAttribute('class','output-card');
+            if(i===0){
+                outputInner.innerHTML = `${inputValue} kg weight in pounds (lb) is `;
+                outputValue.innerHTML = `${inputValue * 2.2046} lb`;
+            } else if (i===1){
+                outputInner.innerHTML = `${inputValue} kg weight in grams (g) is `;
+                outputValue.innerHTML = `${inputValue / 0.001} g`;
+            } else if (i===2){
+                outputInner.innerHTML = `${inputValue} kg weight in ounces (oz) is `;
+                outputValue.innerHTML = `${inputValue * 35.274} oz`;
+            }
 
-        const gramsCard = document.createElement('div')
-        const gramsInner = document.createElement('div')
-        const gramsOutput = document.createElement('span');
-        gramsCard.setAttribute('class','output-card');
-        gramsInner.innerHTML = `${inputValue} kg weight in grams (g) is `;
-        gramsOutput.innerHTML = `${inputValue / 0.001} g`;
-        output.appendChild(gramsCard);
-        gramsCard.appendChild(gramsInner);
-        gramsInner.append(gramsOutput);
-
-        const ouncesCard = document.createElement('div')
-        const ouncesInner = document.createElement('div')
-        const ouncesOutput = document.createElement('span');
-        ouncesCard.setAttribute('class','output-card');
-        ouncesInner.innerHTML = `${inputValue} kg weight in ounces (oz) is `;
-        ouncesOutput.innerHTML = `${inputValue * 35.274} oz`;
-        output.appendChild(ouncesCard);
-        ouncesCard.appendChild(ouncesInner);
-        ouncesInner.append(ouncesOutput);
+            output.appendChild(outputCard);
+            outputCard.appendChild(outputInner);
+            outputInner.append(outputValue);
+        }
     }
 })
 
