@@ -32,26 +32,29 @@ form.addEventListener('submit', (event) => {
         }        
         output.innerHTML = '';
 
-        for(i=0;i<3;i++){
+        const units = ['pounds (lb)', 'grams (g)', 'ounces (oz)'];
+
+        units.forEach((unit) => {
             const outputCard = document.createElement('div')
             const outputInner = document.createElement('div')
             const outputValue = document.createElement('span');
             outputCard.setAttribute('class','output-card');
-            if(i===0){
-                outputInner.innerHTML = `${inputValue} kg weight in pounds (lb) is `;
+
+            outputInner.innerHTML = `${inputValue} kg weight in ${unit} is `;
+
+            if(unit === 'pounds (lb)'){
                 outputValue.innerHTML = `${inputValue * 2.2046} lb`;
-            } else if (i===1){
-                outputInner.innerHTML = `${inputValue} kg weight in grams (g) is `;
+            } else if (unit === 'grams (g)'){
                 outputValue.innerHTML = `${inputValue / 0.001} g`;
-            } else if (i===2){
-                outputInner.innerHTML = `${inputValue} kg weight in ounces (oz) is `;
+            } else if (unit === 'ounces (oz)'){
                 outputValue.innerHTML = `${inputValue * 35.274} oz`;
             }
 
             output.appendChild(outputCard);
             outputCard.appendChild(outputInner);
             outputInner.append(outputValue);
-        }
+
+        })
     }
 })
 
