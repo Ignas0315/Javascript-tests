@@ -3,8 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: sans-serif;
 }
 
 /* Mobile first */
@@ -40,7 +39,7 @@
   opacity: 0.9;
 }
 
-.output-cointainer {
+.output-container {
   width: 100%;
   margin: 25px 0;
   display: flex;
@@ -48,14 +47,59 @@
   align-items: center;
 }
 
-.output-cointainer h1 {
-  color: #fff;
+.output-container h1 {
+  color: #ffffff;
 }
 
-.output-cointainer #output {
+.output-container #output {
   width: 80%;
   margin-top: 25px;
   padding: 30px;
   border-radius: 5px;
   background-color: #fff;
+}
+
+#output {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 0.5rem;
+}
+
+.user-name h1 {
+  color: #222;
+  text-align: center;
+  font-size: 0.5rem;
+}
+
+.user-name {
+  font-size: 0.75rem;
+}
+
+.user-card {
+  text-align: center;
+  width: 48%;
+  border: 2px solid grey;
+  border-radius: 0.75rem;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.user-avatar {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+@media screen and (min-width: 768px) {
+
+   .user-card{
+    width: 32%;
+  }
+
+  .user-name {
+    font-size: 1.25rem;
+  }
 }
