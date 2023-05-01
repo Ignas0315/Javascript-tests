@@ -9,3 +9,33 @@ būti stilizuota su CSS ir būti responsive;
 -------------------------------------------------------------------------- */
 
 const ENDPOINT = 'cars.json';
+
+fetch(ENDPOINT)
+    .then((response) => response.json())
+    .then((carBrands) => {
+        const output = document.getElementById('output');
+        carBrands.forEach((carBrand) => {
+        
+        const brandCard = document.createElement('div');
+        const brandHeading = document.createElement('h2');
+        const brandModels = document.createElement('p');
+        const modelHolder = document.createElement('ul');
+        brandHeading.innerHTML = carBrand.brand;
+        carBrand.models.forEach((model) => {
+            const modelEl = document.createElement('li');
+            modelEl.innerHTML = model;
+            modelHolder.appendChild(modelEl);
+        });
+
+        brandCard.setAttribute('class','brand-card');
+        brandModels.setAttribute('class','models');
+        brandModels.innerHTML= "Available models:";
+        
+        output.appendChild(brandCard);
+        brandCard.appendChild(brandHeading);
+        brandCard.appendChild(brandModels);
+        brandCard.appendChild(modelHolder);
+
+    })
+})
+
