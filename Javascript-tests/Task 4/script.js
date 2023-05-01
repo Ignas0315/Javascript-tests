@@ -29,6 +29,7 @@ fetch(ENDPOINT)
 
         brandCard.setAttribute('class','brand-card');
         brandModels.setAttribute('class','models');
+        
         brandModels.innerHTML= "Available models:";
         
         output.appendChild(brandCard);
