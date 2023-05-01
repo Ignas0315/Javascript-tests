@@ -30,7 +30,7 @@ class Movie {
 const theShining = new Movie('The Shining', 'Stanley Kubrick', 19000000);
 console.log(`Movie ${theShining.title} was directed by ${theShining.director}`)
 if(theShining.wasExpensive()){
-    console.log(`${theShining.title} had the budget of ${theShining.budget} and it is considered to be expensive`)
+    console.log(`${theShining.title} had the budget of ${theShining.budget} $ and it is considered to be expensive`)
 } else {
-    console.log(`${theShining.title} had the budget of ${theShining.budget} and it is not considered to be expensive`)
+    console.log(`${theShining.title} had the budget of ${theShining.budget} $ and it is not considered to be expensive`)
 }
