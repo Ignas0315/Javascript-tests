@@ -24,7 +24,7 @@ const getUserData = async () => {
     return userData;
 
   } catch (error) {
-    console.error();
+    console.error(error);
   }
 }
 
