@@ -13,16 +13,19 @@ function Calculator(a,b) {
 
     this.sum = function () {
         return this.a + this.b;
-    }
+    };
+
     this.subtraction = function () {
         return this.a - this.b;
-    }
+    };
+
     this.multiplication = function () {
         return this.a * this.b;
-    }
+    };
+    
     this.division = function () {
         return this.a / this.b;
-    }
+    };
 }
 
 //debug
