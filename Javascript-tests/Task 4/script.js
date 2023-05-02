@@ -10,11 +10,24 @@ būti stilizuota su CSS ir būti responsive;
 
 const ENDPOINT = 'cars.json';
 
-fetch(ENDPOINT)
-    .then((response) => response.json())
-    .then((carBrands) => {
-        const output = document.getElementById('output');
-        carBrands.forEach((carBrand) => {
+const getCarsData = async () => {
+    try {
+
+        const response = await fetch(ENDPOINT);
+
+        const carsData = await response.json();
+
+        return carsData;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+const generateCarBrandCards = (carBrands) => {
+
+    const output = document.getElementById('output');
+
+    carBrands.forEach((carBrand) => {
         
         const brandCard = document.createElement('div');
         const brandHeading = document.createElement('h2');
@@ -38,5 +51,14 @@ fetch(ENDPOINT)
         brandCard.appendChild(modelHolder);
 
     })
-})
+}
+
+const main = async () => {
+
+    const carsData = await getCarsData();
+  
+    generateCarBrandCards(carsData);
+  }
+
+main();
 
