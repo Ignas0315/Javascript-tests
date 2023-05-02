@@ -21,7 +21,7 @@ const users = [
 ];
 
 function getUserAverageAge(users){
-  return users.reduce((accumulator,current) => current.age+accumulator,0) / users.length
+  return users.reduce((accumulator, current) => current.age + accumulator, 0) / users.length
 }
 
 function getUsersNames(users){
