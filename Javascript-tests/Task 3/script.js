@@ -15,35 +15,52 @@ const ENDPOINT = 'https://api.github.com/users';
 
 const showUsers = document.getElementById('btn');
 
-showUsers.addEventListener('click', (event) => {
+const getUserData = async () => {
+  try {
+    const response = await fetch(ENDPOINT);
 
-    event.preventDefault();
-    const output = document.getElementById('output');
-    fetch(ENDPOINT, {
-        method: "GET"
-    }).then((response) => response.json())
-      .then((users) => {
-        users.forEach((user) => {
-            const userId = user.login
-            const userImage = user.avatar_url
-            const userCard = document.createElement('div');
-            const userName = document.createElement('h2');
-            const userAvatar = document.createElement('img');
+    const userData = await response.json();
 
-            userCard.setAttribute('class','user-card');
-            userAvatar.setAttribute('class','user-avatar');
-            userName.setAttribute('class','user-name');
-            userAvatar.setAttribute('alt','Picture of a user');
+    return userData;
 
-            userName.innerHTML = userId;
-            userAvatar.src = userImage;
+  } catch (error) {
+    console.error();
+  }
+}
 
-            output.appendChild(userCard);
-            userCard.appendChild(userName);
-            userCard.appendChild(userAvatar);
+const generateUserCards = (users) => {
 
-        })
-      })
-    document.getElementById('message').remove();
-    showUsers.setAttribute('disabled','disabled');
+  const output = document.getElementById('output');
+  
+  users.forEach((user) => {
+    const userId = user.login
+    const userImage = user.avatar_url
+    const userCard = document.createElement('div');
+    const userName = document.createElement('h2');
+    const userAvatar = document.createElement('img');
+
+    userCard.setAttribute('class','user-card');
+    userAvatar.setAttribute('class','user-avatar');
+    userName.setAttribute('class','user-name');
+    userAvatar.setAttribute('alt','Picture of a user');
+
+    userName.innerHTML = userId;
+    userAvatar.src = userImage;
+    
+    output.appendChild(userCard);
+    userCard.appendChild(userName);
+    userCard.appendChild(userAvatar);
+
 })
+  document.getElementById('message').remove();
+  showUsers.setAttribute('disabled','disabled');
+}
+
+const main = async () => {
+
+  const githubUsers = await getUserData();
+
+  generateUserCards(githubUsers);
+}
+
+showUsers.addEventListener('click',main)
